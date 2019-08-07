@@ -16,20 +16,20 @@ load("taxonomy-GG13-8-and-HMP-reference-sets-L2-L6.rdata")  #Reference Stool and
 
 #For Bray Curtis, it needs Relative abundance table for each taxonomy level
 
-tax.level = "l2.phylum"
-BC_file_name = "HMP_L2.txt"
+tax.level.bc = "l2.phylum" #"l2.phylum", "l3.class", "l4.order", "l5.family","l6.genus"
+BC_file_name = "HMP_L2.txt" #phylum: HMP_L2.txt, class: HMP_L3.txt, order: HMP_L4.txt, family: HMP_L5.txt, genus: HMP_L6.txt
 
 rel_file <- read.table(BC_file_name,check.names=F,header = T)
-hmp.dist.bc <- HMPdistance(tax.level, d.new.filename = "HMP_L2.txt", d.new.ix.col.not.rel.abu = 1:7, measure = 'bc')
+hmp.dist.bc <- HMPdistance(tax.level.bc, d.new.filename = BC_file_name, d.new.ix.col.not.rel.abu = 1:7, measure = 'bc')
 rownames(hmp.dist.bc) <- rel_file[,1]
 
 
 #Unweighted Unifrac 
 
-tax.level = "Rank2"
+tax.level.unifrac = "Rank2" #phylum: "Rank2", class: "Rank3", order: "Rank4", family: "Rank5", genus: "Rank6"
 data = "HMP_YW_even1000.biom"
 treefile = "rep_set_v35.tre"
-unifrac_uw = Calculate_Unifrac("HMP_YW_even1000.biom","Rank2","rep_set_v35.tre","uw")
+unifrac_uw = Calculate_Unifrac(data,tax.level.unifrac,treefile,"uw")
 sample_list <- rownames(unifrac_uw)
 dist.to.stool <- hmp.distance.helper.new(d.ref = as.character(d.ref.stool.info$sample.id), # matrix of rel abu
                                          d.new = sample_list,
@@ -44,10 +44,10 @@ rownames(hmp.dist.uw) <- as.integer(sample_list)
 
 
 #Weighted Unifrac
-tax.level = "Rank2"
+tax.level.unifrac = "Rank2" #phylum: "Rank2", class: "Rank3", order: "Rank4", family: "Rank5", genus: "Rank6"
 data = "HMP_YW_even1000.biom"
 treefile = "rep_set_v35.tre"
-unifrac_wu = Calculate_Unifrac("HMP_YW_even1000.biom","Rank2","rep_set_v35.tre","wu")
+unifrac_wu = Calculate_Unifrac(data,tax.level.unifrac,treefile,"wu")
 sample_list <- rownames(unifrac_wu)
 dist.to.stool <- hmp.distance.helper.new(d.ref = as.character(d.ref.stool.info$sample.id), # matrix of rel abu
                                          d.new = sample_list,
