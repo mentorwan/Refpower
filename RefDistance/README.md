@@ -1,4 +1,4 @@
-# RefDistance
+# RefDistance (Within HMP samples)
 
 This function will generate Bray Curtis and Unweighted/Weighted Unifrac distance to HMP reference stool sample and HMP reference nasal samples
 
@@ -21,7 +21,6 @@ hmp.dist.bc <- HMPdistance(tax.level.bc, d.new.filename = BC_file_name, d.new.ix
 rownames(hmp.dist.bc) <- rel_file[,1]
 
 ```
-
 ## Unweighted Unifrac Distance
 
 Input: 
@@ -77,3 +76,15 @@ dist.to.nasal <- hmp.distance.helper.new(d.ref = as.character(d.ref.nasal.info$s
 hmp.dist.wu <- cbind(dist.to.stool, dist.to.nasal)
 
 ```
+
+# RefDistance_AG (AG samples against HMP reference and stool samples)
+
+Input: 
+tax.level
+Relative abundance file.
+Tree file
+sample data biom file
+full data with HMP samples 
+
+Output:
+A table with matrix n*6 which n is number of samples. For each distance, it includes 2 distances to HMP stool and HMP nasal.
