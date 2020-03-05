@@ -14,7 +14,6 @@ The purpose of this script is to compute mean Bray_Curtis, Unweighted Unifrac an
 * Y/N  : (Y for HMP test samples with HMP using 2011 Greengene database. N for test samples using Greengene 13.8)
 
 ## Output: 
-(Example: output.txt)
 
-A table with matrix n * 6 which n is number of samples. For each distance, it includes 2 distances to HMP stool samples and HMP nasal samples. The first two columns are for the Bray_Curtis distance, the next two for the Unweighted Unifrac distance and the last two columns for weighted unifrac distance.
+A table with matrix n * 6 which n is number of samples. For each distance, it includes 2 distances to HMP stool samples and HMP nasal samples. The first two columns are for the Bray_Curtis distance, the next two for the Unweighted Unifrac distance and the last two columns for weighted unifrac distance. (Example: output.txt)
 
